@@ -24,7 +24,7 @@ RUN pip install -r requirements.txt --no-cache-dir
 COPY . .
 
 # Запускаем gunicorn в образе
-CMD ["gunicorn", "--bind", "0.0.0.0:9000", "backend.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:9000", "kittygram_backend.wsgi"]
 
 # При старте контейнера запустить сервер разработки.
 #CMD ["python", "manage.py", "runserver", "0:9000"]
