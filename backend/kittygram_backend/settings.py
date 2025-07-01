@@ -59,7 +59,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
-
+# Database
 DB_ENGINE = os.getenv('DB_ENGINE', 'postgres').lower()
 if DB_ENGINE == 'sqlite':
     DATABASES = {
