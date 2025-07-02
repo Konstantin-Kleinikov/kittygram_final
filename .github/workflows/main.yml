@@ -179,4 +179,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Деплой успешно выполнен!
+          message: "✅ Деплой успешно выполнен!\n👤 Кем: ${{ github.actor }}\n📝 Commit: ${{ github.event.commits[0].message }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
