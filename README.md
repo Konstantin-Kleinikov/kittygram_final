@@ -31,7 +31,8 @@
 ### 1. Клонируйте репозиторий на компьютер
 
 ### 2. Заполните переменные окружения
-Для корректной работы проекта необходимо заполнить переменные окружения. Создайте файл `.env` в корневой директории проекта и добавьте в него следующие переменные:
+Для корректной работы проекта необходимо заполнить переменные окружения. Создайте файл `.env` в 
+корневой директории проекта и добавьте в него следующие переменные:
 
 ```env
 - SECRET_KEY=your_django_secret_key
@@ -44,13 +45,32 @@
 - DB_HOST=db
 - DB_PORT=5432
 ```
+### 3. Установите зависимости и выполните миграции
+В терминале перейдите в директорию backend и выполните следующие команды:
+
+```python
+pip install -r requirements.txt
+python manage.py migrate
+```
+### 4. Запустите frontend-проект
+```bash
+npm run start
+```
+### 5. Запустите backend-проект
+```bash
+python manage.py runserver
+```
+### 6. Откройте в браузере адрес http://localhost:3000
+
 
 ## Как развернуть проект на удаленном сервере
 
-### 1. Установите Docker и Docker Compose
+### 1. Создайте каталог проекта
+Зайдите на удаленный сервер и в директории /home/<user>/ создайте каталог kittygram.
 
 ### 2. Заполните переменные окружения
-Для корректной работы проекта необходимо заполнить переменные окружения. Создайте файл `.env` в корневой директории проекта и добавьте в него следующие переменные:
+Для корректной работы проекта необходимо заполнить переменные окружения. Создайте файл `.env` в 
+корневой директории проекта kittygram и добавьте в него следующие переменные:
 
 ```env
 - SECRET_KEY=your_django_secret_key
@@ -63,7 +83,23 @@
 - DB_HOST=db
 - DB_PORT=5432
 ```
+### 3. Заполните переменные Secrets в GitHub
+В Settings проекта перейдите в Secrets and variables и зайдите на страницу Actions.
+Заполните следующие Repository secrets:
+```env
+- DOCKER_USERNAME=your_docker_hub_username
+- DOCKER_PASSWORD=your_docker_hub_password
+- HOST=remote_server_host_ip
+- USER=your_remote_server_user
+- SSH_KEY=your_ssh_private_key
+- SSH_PASSPHRASE=your_ssh_pass_phrase
+- TELEGRAM_TO=your_telegram_chat_id
+- TELEGRAM_TOKEN=your_telegram_token_to_access_api
+```
 
+### 4. Выполните push из локального сервера, чтобы запустился GitHub Action
+
+### 5. Дождитесь сообщения от Telegram Bot
 
 ## Как проверить работу с помощью автотестов
 
@@ -73,7 +109,7 @@ repo_owner: ваш_логин_на_гитхабе
 kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
 taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
 dockerhub_username: ваш_логин_на_докерхабе
-
+```
 
 Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
 
